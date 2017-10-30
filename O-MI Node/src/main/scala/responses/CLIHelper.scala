@@ -82,7 +82,7 @@ class CLIHelper(val singleStores: SingleStores, dbConnection: DB )(implicit syst
     val infoItems = odf.infoItems
     dbConnection.writeMany(infoItems)
     singleStores.hierarchyStore execute Union(odf)
-    val latestValues = infoItems.map(ii =>(ii.path, ii.values.maxBy(_.timestamp.getTime)))
+    val latestValues = infoItems.filterNot(_.values.isEmpty).map(ii =>(ii.path, ii.values.maxBy(_.timestamp.getTime)))
     latestValues.foreach(pv => singleStores.latestStore execute SetSensorData(pv._1,pv._2))
 
   }

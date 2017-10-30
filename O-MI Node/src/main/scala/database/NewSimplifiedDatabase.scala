@@ -412,7 +412,7 @@ trait NewSimplifiedDatabase extends Tables with DB with TrimmableDB{
         DBIO.sequence( valueWritingIOs ).map{
           case countsOfCreatedValuesPerPath: Seq[Seq[Int]] =>  
             val sum = countsOfCreatedValuesPerPath.map( _.sum).sum
-            log.debug( s"Wrote total of $sum values to ${countsOfCreatedValuesPerPath.length} paths." )
+            log.info( s"Wrote total of $sum values to ${countsOfCreatedValuesPerPath.length} paths." )
             Returns.Success()
         }
     }

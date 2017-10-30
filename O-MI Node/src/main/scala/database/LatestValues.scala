@@ -79,6 +79,7 @@ object OdfTree {
   def empty = OdfTree(OdfObjects())
 }
 
+
 case class GetTree() extends Query[OdfTree, OdfObjects] {
   def query(t: OdfTree, d: Date) = t.root
 }

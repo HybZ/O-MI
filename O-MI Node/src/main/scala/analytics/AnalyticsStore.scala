@@ -59,7 +59,7 @@ class AnalyticsStore(
   val newDataAverageCount: Int = settings.writeAvgIntervalSampleSize
   val updateFrequency: FiniteDuration = settings.updateInterval
   val averageWriteInfoName = settings.averageWriteInfoName
-  val averageReadInfoName = settings.averageReadIAnfoName
+  val averageReadInfoName = settings.averageReadInfoName
   val numWriteInfoName = settings.numberWritesInfoName
   val numReadInfoName = settings.numberReadsInfoName
   val numUserInfoName = settings.numberUsersInfoName

@@ -135,9 +135,6 @@ class SystemTestCallbackServer(destination: ActorRef, interface: String, port: I
   val route = formFields("msg".as[String]) {msg =>
 
     val pretty = prettyPrint.format( XML.loadString(msg))
-    println("\n\n")
-    println(msg)
-    println("\n\n")
     destination ! Option(XML.loadString(msg))
     //entity(as[NodeSeq]) { data =>
     //destination ! Option(data)

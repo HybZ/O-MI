@@ -90,7 +90,7 @@ class NodeCLITest(implicit ee: ExecutionEnv) extends Specification{
     val removeHandler = new RemoveTester( Path("Objects/aue" ) )
     val remote = new InetSocketAddress("Tester",22)
     val connection = TestActorRef( new DummyRemote(remote.toString()))
-    val listenerRef = TestActorRef(new OmiNodeCLI(
+    val listenerRef = TestActorRef( new OmiNodeCLI(
       connection,
       remote,
       removeHandler,

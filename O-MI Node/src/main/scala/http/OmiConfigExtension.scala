@@ -85,7 +85,7 @@ class OmiConfigExtension( val config: Config) extends Extension
   val numReadSampleWindowLength: FiniteDuration = config.getDuration("analytics.read.windowLength")
   val readAvgIntervalSampleSize: Int = config.getInt("analytics.read.intervalSampleSize")
   val numberReadsInfoName: String = config.getString("analytics.read.numberOfReadsInfoItemName")
-  val averageReadIAnfoName: String = config.getString("analytics.read.averageReadIntervalInfoItemName")
+  val averageReadInfoName: String = config.getString("analytics.read.averageReadIntervalInfoItemName")
 
   val numWriteSampleWindowLength: FiniteDuration = config.getDuration("analytics.write.windowLength")
   val writeAvgIntervalSampleSize: Int = config.getInt("analytics.write.intervalSampleSize")

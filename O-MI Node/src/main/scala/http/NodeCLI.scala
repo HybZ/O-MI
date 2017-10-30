@@ -305,7 +305,11 @@ import spray.json._
       val file = new File(filePath)
       val bw = new BufferedWriter(new FileWriter(file))
       val res = JsArray(allSubs.map{sub =>
-        Try(sub.toJson)}.map{case Success(s) => Some(s);case Failure(ex) => {log.warning(ex.getMessage);None}}.flatten.toVector)
+        Try(sub.toJson)}.map{
+        case Success(s) => {
+          println(s"\n\nSUCCESS$s\n\n") //TODO REMOVE
+          Some(s)}
+        case Failure(ex) => {log.warning(s"adding subscription failed for sub: \n" + ex.getMessage);None}}.flatten.toVector)
       bw.write(res.prettyPrint)
       bw.close()
     })
@@ -360,7 +364,8 @@ import spray.json._
 
 
   def receive : Actor.Receive = {
-    case Received(data) =>{ 
+    case Received(data) =>{
+      println("\n\nRECEIVED:\n" + data.decodeString("UTF-8") + "\n\n")
       val dataString : String = data.decodeString("UTF-8")
 
       val splitRegex = """\"((?:\\\"|[^\"])*)\"|(\S+)""".r
